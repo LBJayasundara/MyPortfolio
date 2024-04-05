@@ -17,6 +17,9 @@
 
     <link rel="stylesheet" href="css/style.css">
 
+    <script src="js/script.js"></script>
+
+
 </head>
 <body>
     
@@ -34,6 +37,7 @@
 </nav>
 
     <div class="bx bx-moon" id="darkMode-icon"></div>
+    <div class="bx bx-menu" id="menu-icon"></div>
 </header>
 
 <!-- home section design -->
@@ -76,8 +80,9 @@
         </div>
 
         <div class="circle"></div>
-        <div class="overlay"></div>
+        
     </div>
+    <div class="overlay"></div>
 
     <div class="home-img">
         <img src="images/mainpic.png" alt="mypic" >
@@ -286,13 +291,28 @@
 
 
 
+<!-- Scroll revel-->
+<script src="https://unpkg.com/scrollreveal"></script>
 
-
+<script src="https://unpkg.com/scrollreveal"></script>
 
 <!-- swipper css -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
+
+//   Menu icon nav bar
+let menuIcon =document.querySelector('#menu-icon');
+let navbar =document.querySelector('.navbar');
+
+menuIcon.onclick = () => {
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+
+}
+
+
+
 //   Scorll selecion active link
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
@@ -317,6 +337,10 @@ let header =document.querySelector('.header');
 
 header.classList.toggle('sticky',window.scrollY > 100)
 
+/* =======remove menu icon navbar when click navbar link (scroll) */
+
+menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('active');
 
 };
 
@@ -336,6 +360,36 @@ navigation: {
   prevEl: ".swiper-button-prev",
 },
 });
+
+
+
+/*========= Dark light mode=============*/
+
+let darkModeIcon = document.querySelector('#darkMode-icon');
+
+darkModeIcon.onclick = () => {
+    darkModeIcon.classList.toggle('bx-sun');
+    document.body.classList.toggle('dark-mode')
+};
+
+
+
+/*======Scroll revel=====*/
+ScrollReveal({
+    // reset: true,
+    distance:'80px',
+    duration:2000,
+    delay:200  
+   
+});
+
+ScrollReveal().reveal('.home-content, .heading',{ origin: 'top' });
+ScrollReveal().reveal('.home-img img, .Services-container, .portfolio-box, .testimonial-wrapper, .contact Form',{ origin: 'bottom'});
+ScrollReveal().reveal('.home-content h1, .about-img img',{ origin: 'left'});
+ScrollReveal().reveal('.home-content h3, .about-content p',{ origin: 'right'});
+
+
+
 
 
 
